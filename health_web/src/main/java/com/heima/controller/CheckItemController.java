@@ -8,6 +8,7 @@ import com.heima.health.entity.Result;
 import com.heima.pojo.CheckItem;
 import com.heima.service.CheckItemService;
 import com.sun.xml.internal.ws.handler.HandlerException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.InetAddress;
@@ -41,6 +42,7 @@ public class CheckItemController {
      * @return void
      */
     @PostMapping("/add")
+    @PreAuthorize("hasAuthority('CHECKITEM_ADD')")
     public Result add(@RequestBody CheckItem checkItem){
         //调用添加
         checkItemService.add(checkItem);

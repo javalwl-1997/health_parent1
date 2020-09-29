@@ -7,8 +7,8 @@
     <security:http pattern="/css/**" security="none"/>
     <security:http pattern="/img/**" security="none"/>
     <security:http pattern="/plugins/**" security="none"/>
+    <security:http pattern="/js/**" security="none"/>
     <security:http pattern="login.html" security="none"/>
-    <security:http pattern="/user/loginFail.do" security="none"/>
      <!--拦截规则-->
     <security:http auto-config="true" use-expressions="true">
         <security:intercept-url pattern="/**" access="isAuthenticated()"/>
@@ -19,10 +19,10 @@
         <!--登录页面配置规则-->
         <security:form-login login-page="/login.html"
                              login-processing-url="/login.do"
-                             authentication-failure-url="/user/loginFail.do"
+                             authentication-failure-url="/login.html"
                              username-parameter="username"
                              password-parameter="password"
-                             default-target-url="/user/loginSuccess.do"
+                             default-target-url="/pages/main.html"
                              always-use-default-target="true"/>
         <!--关闭csrf-->
         <security:csrf disabled="true"/>
@@ -31,7 +31,7 @@
     </security:http>
     <!--认证管理器-->
     <security:authentication-manager>
-        <security:authentication-provider user-service-ref="SecurityUserService">
+        <security:authentication-provider user-service-ref="springSecurityUserService">
             <security:password-encoder ref="encoder"/>
         </security:authentication-provider>
     </security:authentication-manager>
