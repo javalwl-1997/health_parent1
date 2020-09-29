@@ -7,7 +7,6 @@ import com.heima.health.entity.QueryPageBean;
 import com.heima.health.entity.Result;
 import com.heima.pojo.CheckItem;
 import com.heima.service.CheckItemService;
-import com.sun.xml.internal.ws.handler.HandlerException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,9 +60,7 @@ public class CheckItemController {
         return new Result(true,MessageConstant.QUERY_CHECKITEM_SUCCESS,pageResult);
     }
 
-    public static void main(String[] args) throws UnknownHostException {
-        System.out.println(InetAddress.getLocalHost());
-    }
+
     /**
      * 编辑修改检查项
      * @params
