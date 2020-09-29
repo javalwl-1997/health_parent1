@@ -44,24 +44,24 @@
     <!-- 引入组件库 -->
     <script src="js/vue.js"></script>
     <script src="plugins/elementui/index.js"></script>
-<!--<script>-->
-    <!--var vue = new Vue({-->
-        <!--el:'#app',-->
-        <!--data:{-->
-            <!--username:'admin',-->
-            <!--password:'1234'-->
-        <!--},-->
-        <!--methods:{-->
-            <!--login(){-->
-                <!--axios.post('/login.do?username=' + this.username  + "&password=" + this.password).then(res => {-->
-                    <!--if(res.data.flag){-->
-                        <!--window.location.href="/pages/main.html"-->
-                    <!--}else{-->
-                        <!--this.$message.error(res.data.message);-->
-                    <!--}-->
-                <!--})-->
-            <!--}-->
-        <!--}-->
-    <!--});-->
-<!--</script>-->
+<script>
+    var vue = new Vue({
+        el:'#app',
+        data:{
+            username:'admin',
+            password:'1234'
+        },
+        methods:{
+            login(){
+                axios.post('/login.do?username=' + this.username  + "&password=" + this.password).then(res => {
+                    if(res.data.flag){
+                        window.location.href="/pages/main.html"
+                    }else{
+                        this.$message.error(res.data.message);
+                    }
+                })
+            }
+        }
+    });
+</script>
 </html>
