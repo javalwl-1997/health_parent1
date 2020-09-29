@@ -61,6 +61,6 @@ public class ReportController {
         return  new Result(true, MessageConstant.GET_MEMBER_NUMBER_REPORT_SUCCESS,resultMap);
     }
 
-    @GetMapping("/getSetmealReport")
+//    @GetMapping("/getSetmealReport")
 
 }
