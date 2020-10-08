@@ -7,6 +7,7 @@ import com.heima.pojo.Setmeal;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 2 * @Author: liwanlei
@@ -44,4 +45,6 @@ public interface SetmealDao {
     List<CheckGroup> findCheckGroupBySetmealId(int id);
 
     List<CheckItem> findCheckItemsByCheckGroupId(Integer id);
+
+    List<Map<String, Object>> getSetmealReport();
 }

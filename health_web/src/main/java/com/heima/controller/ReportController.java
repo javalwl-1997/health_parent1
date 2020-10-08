@@ -4,6 +4,8 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.heima.health.constant.MessageConstant;
 import com.heima.health.entity.Result;
 import com.heima.service.MemberService;
+import com.heima.service.ReportService;
+import com.heima.service.SetmealService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +34,10 @@ public class ReportController {
 
     @Reference
     private MemberService memberService;
+    @Reference
+    private  SetmealService setmealService;
+    @Reference
+    private ReportService reportService;
     @GetMapping("/getMemberReport")
     public Result getMemberReport(){
         //构建12个月的数据
@@ -61,6 +67,29 @@ public class ReportController {
         return  new Result(true, MessageConstant.GET_MEMBER_NUMBER_REPORT_SUCCESS,resultMap);
     }
 
-//    @GetMapping("/getSetmealReport")
+    /**
+     * 套餐预约占比
+     * @author: lwl
+     * @date: 2020/10/8
+     * @param :
+     * @return: com.heima.health.entity.Result
+     */
+    @GetMapping("/getSetmealReport")
+    public  Result getSetmealReport(){
+        //service统计套餐预约个数
+        List<Map<String,Object>> reportData = setmealService.getSetmealReport();
+        Map<String, Object> resultMap =new HashMap<String, Object>();
+        //抽取套餐名称
+        List<String> setmealNames=new ArrayList<String>();
+        if (null!=reportData&&reportData.size()>0){
+            for (Map<String, Object> data:reportData){
+                setmealNames.add((String)data.get("name"));
+            }
+        }
+        resultMap.put("setmealName",setmealNames);
+        resultMap.put("setmealCount",reportData);
+        return new Result(true,MessageConstant.GET_SETMEAL_COUNT_REPORT_SUCCESS,resultMap);
+
+    }
 
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/getUsername")
+    @GetMapping("/getusername")
     public Result getUsername(){
         // SecurityContextHolder security容器的持有者
         // getContext 获取它的容器

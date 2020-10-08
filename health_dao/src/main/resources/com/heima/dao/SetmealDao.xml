@@ -131,6 +131,10 @@
         select * from t_checkitem  where id
         in (select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#{id})
     </select>
-
+    <!--统计预约套餐个数-->
+    <select id="getSetmealReport" resultType="map">
+        select s.name,count(1) value from t_setmeal s, t_order o
+        where s.id=o.setmeal_id group by s.id,s.name
+    </select>
 </mapper>
 

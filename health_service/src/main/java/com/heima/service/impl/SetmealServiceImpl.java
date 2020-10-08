@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 2 * @Author: liwanlei
@@ -207,5 +208,17 @@ public class SetmealServiceImpl implements SetmealService {
             }
         }
         return setmeal;
+    }
+
+    /**
+     * 统计预约套餐个数
+     * @author: lwl
+     * @date: 2020/10/8
+     * @param :
+     * @return: java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
+     */
+    @Override
+    public List<Map<String, Object>> getSetmealReport() {
+        return setmealDao.getSetmealReport();
     }
 }

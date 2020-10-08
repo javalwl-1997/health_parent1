@@ -6,6 +6,7 @@ import com.heima.health.entity.QueryPageBean;
 import com.heima.pojo.Setmeal;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 2 * @Author: liwanlei
@@ -82,4 +83,12 @@ public interface SetmealService {
     Setmeal findDetailById(int id);
 
     Setmeal findDetailById3(int id);
+    /**
+     * 统计套餐个数
+     * @author: lwl
+     * @date: 2020/10/8
+     * @param null:
+     * @return:
+     */
+    List<Map<String, Object>> getSetmealReport();
 }
