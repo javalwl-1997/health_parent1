@@ -2,6 +2,9 @@ package com.heima.dao;
 
 import com.heima.pojo.Member;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 一些声明信息
  * Description: <br/>
@@ -23,4 +26,28 @@ public interface MemberDao {
      * @return:
      */
     Integer findMemberCountBeforDate(String endDate);
+    /**
+     * 会员性别报表占比
+     * @author: lwl
+     * @date: 2020/10/9
+     * @param null:
+     * @return:
+     */
+    List<Map<String, Object>> getMemberReportBySex();
+    /**
+     * 会员年龄报表占比
+     * @author: lwl
+     * @date: 2020/10/9
+     * @param null:
+     * @return:
+     */
+    List<String> findMemberAge();
+    /**
+     * 计算会员年龄
+     * @author: lwl
+     * @date: 2020/10/9
+     * @param null:
+     * @return:
+     */
+    Integer calcMmeberAge(String age);
 }

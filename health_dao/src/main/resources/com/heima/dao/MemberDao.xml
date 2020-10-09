@@ -22,5 +22,18 @@
     <select id="findMemberCountBeforDate" resultType="int" parameterType="string">
         select count(1) from t_member where regtime &lt;=#{value}
     </select>
+    <!--根据会员年龄报表占比-->
+    <select id="getMemberReportBySex" resultType="map">
+    select sex name,count(1) value from t_member group by sex
+    </select>
+    <!--查询会员生日-->
+    <select id="findMemberAge" resultType="string">
+        select birthday from t_member
+    </select>
+
+    <!--计算会员年龄-->
+    <select id="calcMmeberAge" resultType="int" parameterType="string">
+        SELECT TIMESTAMPDIFF(YEAR,#{age},DATE_FORMAT(NOW(), '%Y-%m-%d'))
+    </select>
 </mapper>
 
