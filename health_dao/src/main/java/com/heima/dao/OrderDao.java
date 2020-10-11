@@ -1,6 +1,7 @@
 package com.heima.dao;
 
 import com.heima.pojo.Order;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -20,4 +21,18 @@ public interface OrderDao {
     void add(Order order);
     //通过id查询订单详情
     Map findById4Detail(Integer id);
+
+    Integer findOrderCountByToday(String reportDate);
+
+    Integer findVisitsCountByToday(String reportDate);
+
+    Integer findVisitsNumberBythisWeek(String monday);
+
+
+    Integer findVisitsNumberBythisMonth(String firstDayOfMonth);
+
+    List<Map<String, Object>> findHotSetmeal();
+
+
+    int findOrderCountBetweenDate(@Param("startDate") String startDate,@Param("endDate") String endDate );
 }

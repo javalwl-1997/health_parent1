@@ -53,5 +53,34 @@
       where  m.id=o.setmeal_id and o.setmeal.id=s.id
       and o.id=#{id}
     </select>
+    <!--今日预约-->
+    <select id="findOrderCountByToday" parameterType="string" resultType="int">
+        select count(id) from t_order where orderDate = #{value}
+    </select>
+    <!--今日到诊-->
+    <select id="findVisitsCountByToday" parameterType="string" resultType="int">
+        select count(id) from t_order where orderDate = #{value} and orderStatus='已到诊'
+    </select>
+    <!--统计范围内预约数量-->
+    <select id="findOrderCountBetweenDate" parameterType="String" resultType="int">
+        select count(1) from t_order where orderDate between #{startDate} and #{endDate}
+    </select>
+    <!--本周到诊数-->
+    <select id="findVisitsNumberBythisWeek" parameterType="string" resultType="int">
+        select count(id) from t_order where orderDate &gt;= #{value} and orderStatus = '已到诊'
+    </select>
+    <!--本月到诊数-->
+    <select id="findVisitsNumberBythisMonth" parameterType="string" resultType="int">
+        select count(id) from t_order where orderDate &gt;= #{value} and orderStatus = '已到诊'
+    </select>
+    <!--热门套餐，查询前四条-->
+    <select id="findHotSetmeal" resultType="map">
+        select s.name,t.setmeal_count,t.setmeal_count/t1.total proportion,s.remark from (
+            select setmeal_id,count(1) setmeal_count from t_order group by setmeal_id
+        ) t, (select count(1) total from t_order) t1, t_setmeal s
+        where s.id=t.setmeal_id
+        order by t.setmeal_count desc limit 0,4
+    </select>
+
 </mapper>
 

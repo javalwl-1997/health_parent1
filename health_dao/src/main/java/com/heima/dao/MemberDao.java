@@ -50,4 +50,36 @@ public interface MemberDao {
      * @return:
      */
     Integer calcMmeberAge(String age);
+    /**
+     * @Title
+     * 今日新增会员
+     * @author lwl
+     * @param null
+     * @return
+     */
+    Integer findMemberCountByToday(String reportDate);
+    /**
+     * @Title
+     * 会员总量
+     * @author lwl
+     * @param null
+     * @return
+     */
+    Integer findMemberTotalCount();
+    /**
+     * @Title
+     * 本周新增会员
+     * @author lwl
+     * @param null
+     * @return
+     */
+    Integer findThisWeekNewMember(String monday);
+    /**
+     * @Title
+     * 本月新增会员
+     * @author lwl
+     * @param null
+     * @return
+     */
+    Integer findThisMonthNewMember(String firstDayOfMonth);
 }

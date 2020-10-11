@@ -35,5 +35,21 @@
     <select id="calcMmeberAge" resultType="int" parameterType="string">
         SELECT TIMESTAMPDIFF(YEAR,#{age},DATE_FORMAT(NOW(), '%Y-%m-%d'))
     </select>
+    <!--今日新增会员-->
+    <select id="findMemberCountByToday" parameterType="string" resultType="int">
+        select count(id) from t_member where regTime = #{value}
+    </select>
+    <!--会员总数-->
+    <select id="findMemberTotalCount" resultType="int">
+        select count(id) from t_member
+    </select>
+    <!--本周新增会员-->
+    <select id="findThisWeekNewMember" parameterType="string" resultType="int">
+        select count(id) from t_member where regTime &gt;= #{value}
+    </select>
+    <!--本月新增会员-->
+    <select id="findThisMonthNewMember" parameterType="string" resultType="int">
+        select count(id) from t_member where regTime &gt;= #{value}
+    </select>
 </mapper>
 

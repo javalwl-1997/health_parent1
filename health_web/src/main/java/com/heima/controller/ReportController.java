@@ -92,4 +92,21 @@ public class ReportController {
 
     }
 
+
+
+    /**
+     * @Title getBusinessReportData
+     * 运营数据统计
+     * @author lwl
+     * @param
+     * @return com.heima.health.entity.Result
+     */
+    @GetMapping("/getBusinessReportData")
+    public Result getBusinessReportData(){
+        Map<String,Object> businessReport =reportService.getBusinessReportData();
+        return  new Result(true,MessageConstant.GET_BUSINESS_REPORT_SUCCESS,businessReport);
+
+    }
+
+
 }

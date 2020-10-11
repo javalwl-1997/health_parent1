@@ -1,5 +1,7 @@
 package com.heima.service;
 
+import java.util.Map;
+
 /**
  * 一些声明信息
  * Description: <br/>
@@ -9,4 +11,5 @@ package com.heima.service;
  * @since JDK 1.8
  */
 public interface ReportService {
+    Map<String, Object> getBusinessReportData();
 }
